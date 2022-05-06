@@ -11,8 +11,31 @@
             <div class="register" id="app">
                 <form action="/addUser" method="post" class="profileEditer" enctype="multipart/form-data">
                     @csrf
-                    <div class="registerInfo" v-if="isSelected === '1'">
+                    <div class="registerInfo">
+                        @if($errors->has('thumbnail'))
+                        @foreach($errors->get('thumbnail') as $error)
+                        <span class="error">{{ $error }}</span>
+                        @endforeach
+                        @endif
+                        <div class="thumbnailBox">
+                            <label for="thumbnail">
+                                <img src="../images/userIcon.png" id="preview">
+                            </label>
+                            <input type="file" name="thumbnail" id="thumbnail" onchange="previewImage(this);">
+                        </div>
+                        @if($errors->has('name'))
+                        @foreach($errors->get('name') as $error)
+                        <span class="error">{{ $error }}</span>
+                        @endforeach
+                        @endif
                         <h3 class="registerLogo">アカウントを作成</h3>
+                        <div class="registerRow">
+                            <img src=../images/profile.png>
+                            <div class="inputArea">
+                                <label for="name">名前</label>
+                                <input type="text" name="name" id="name" placeholder="例)山田　五郎">
+                            </div>
+                        </div>
                         @if($errors->has('email'))
                             @foreach($errors->get('email') as $error)
                                 <span class="error">{{ $error }}</span>
@@ -48,39 +71,7 @@
                                 <label for="password">パスワード</label> 
                                 <input type="password" name="password" id="password">
                             </div>
-                        </div>
-                        <button type="button" class="submitArea" v-on:click="select('2')">
-                            <span>次へ</span>
-                        </button>
-                        <button type="button" class="submitArea subButton" onclick="location.href='/'">
-                            <span>ログイン画面</span>
-                        </button>
-                    </div>
-                    <div class="registerInfo" v-else-if="isSelected === '2'">
-                        @if($errors->has('thumbnail'))
-                            @foreach($errors->get('thumbnail') as $error)
-                                <span class="error">{{ $error }}</span>
-                            @endforeach
-                        @endif
-                        <div class="thumbnailBox">
-                            <label for="thumbnail">
-                                <img src="../images/userIcon.png" id="preview">
-                            </label>
-                            <input type="file" name="thumbnail" id="thumbnail" onchange="previewImage(this);">
-                        </div>
-                        @if($errors->has('name'))
-                            @foreach($errors->get('name') as $error)
-                                <span class="error">{{ $error }}</span>
-                            @endforeach
-                        @endif
-                        <div class="registerRow">
-                            <img src=../images/profile.png>
-                            <div class="inputArea">
-                                <label for="name">名前</label>
-                                <input type="text" name="name" id="name" placeholder="例)山田　五郎">
-                            </div>
-                        </div>    
-                        
+                        </div>  
                         
                         
                         <div class="registerRow">

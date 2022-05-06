@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\Log;
 use App\Models\User;
 use App\Models\TalkRoom;
 use Illuminate\Support\Facades\Hash;
@@ -97,7 +98,7 @@ class UserController extends Controller
     public function addUser(Request $request){
 
         $validate = Validator::make($request->all(),[
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg',
             'name' => 'required',
             'email' => 'required | email',
             'tel' => 'digits_between:0,11'
@@ -105,15 +106,17 @@ class UserController extends Controller
         if($validate->fails()){
             return redirect('/register')->withErrors($validate)->withInput();
         }
-        $file = $request->thumbnail;
-        $extension = $file->getClientOriginalExtension();
-        $thumbnailName = $file->getClientOriginalName();
 
+        $thumbnailName = 'userIcon.png';
 
-        
-        $thumbnailName = time().$file->getClientOriginalName();
-        $targetPath = public_path('thumbnails/');
-        $file->move($targetPath,$thumbnailName);
+        if(!empty($request->thumbnail)){
+            $file = $request->thumbnail;
+            $extension = $file->getClientOriginalExtension();
+            $thumbnailName = $file->getClientOriginalName();
+            $thumbnailName = time().$file->getClientOriginalName();
+            $targetPath = public_path('thumbnails/');
+            $file->move($targetPath,$thumbnailName);
+        }
 
 
 
@@ -153,10 +156,16 @@ class UserController extends Controller
 
         /*バリデーション*/
         $validate = Validator::make($request->all(),User::$rules);
-        $thumbnailName = '';
+        if($validate->fails()){
+            return redirect('/edit')
+                    ->withErrors($validate);
+        }
+        $thumbnailName = 'userIcon.png';
+        Log::info($thumbnailName);
 
         /*写真をサーバーに保存*/
         if(!empty($request->thumbnail)){
+            Log::info($thumbnailName.'を追加');
             $file = $request->thumbnail;
             $extension = $file->getClientOriginalExtension();
             $thumbnailName = $file->getClientOriginalName();
@@ -164,30 +173,28 @@ class UserController extends Controller
             $thumbnailName = time().$file->getClientOriginalName();
             $targetPath = public_path('thumbnails/');
             $file->move($targetPath,$thumbnailName);
+        }else{
+            Log::error('ファイルが空ですね');
         }
+        Log::info($thumbnailName);
 
 
 
         /*ユーザー情報の更新*/
         try{
-            $user = User::where('id',$id)->first();
-            if($thumbnailName == ''){
-                $thumbnailName = $user->icon_pass;
-            }
-            $user->update([
+            User::where('id',$id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'tel' => $request->tel,
-                'icon_pass' => $thumbnailName,
+                'icon_pass' =>$thumbnailName,
                 'profile_messege' => $request->statesMsg
             ]);
-            
-            return redirect('/home');
+            Log::info($thumbnailName);
         }catch(Exception $e){
             report($e);
-            session()->flash('messege','アカウント作成に失敗しました');
+            Log::error('プロフィール編集に失敗しました。 errorMessage:'.$e);
         }
-
+        return redirect('/home');
         
     }
 

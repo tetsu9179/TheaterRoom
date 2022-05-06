@@ -103,6 +103,9 @@
         img{
             width: 5%;
             height: 5%;
+            @media screen and (max-width:768px) {
+                width: 13%;
+            }
         }
     }
     .thumbnailBox{
