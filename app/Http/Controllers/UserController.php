@@ -103,7 +103,7 @@ class UserController extends Controller
             'tel' => 'digits_between:0,11'
         ]);
         if($validate->fails()){
-            return redirect('/edit')->withErrors($validate)->withInput();
+            return redirect('/register')->withErrors($validate)->withInput();
         }
         $file = $request->thumbnail;
         $extension = $file->getClientOriginalExtension();
