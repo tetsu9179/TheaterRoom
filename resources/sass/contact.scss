@@ -1,0 +1,24 @@
+.contact{
+    padding: 0 4rem;
+    h3{
+        text-align: center;
+        margin-top: 3rem;
+        font-weight: 700;
+        font-size: 4rem;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        height: 90vh;
+    }
+    label{
+        margin-top: 3rem;
+    }
+    input[type=text]{
+        font-size: 2rem;
+    }
+    textarea{
+        height: 50%;
+        font-size: 2rem;
+    }
+}

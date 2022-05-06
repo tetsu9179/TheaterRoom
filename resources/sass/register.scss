@@ -1,0 +1,160 @@
+.registerRow{
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    .thumbnailEdit{
+        height: 10%;
+        width: 10%;
+        border-radius: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    img{
+        height: 13%;
+        width: 13%;
+    }
+    .inputArea{
+        width: 70%
+    }
+}
+
+.profileEditer{
+    display: flex;
+    flex-wrap: wrap;
+    .profile{
+        width: 100%;
+    }
+}
+
+.register{
+    background-color: #fff;
+    padding: 5rem;
+    margin: 0 auto;
+    h3{
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 700;
+    }
+    input{
+        font-size: 3rem;
+    }
+    button{
+        margin-top: 6rem;
+        width: 80%;
+        border-radius: 1rem;
+        span{
+            font-size: 3.5rem;
+        }
+    }
+    @media screen and (max-width:520px) {
+        h3{
+            font-size: 3rem;
+        }
+        input{
+            font-size: 2rem;
+        }
+        button{
+            span{
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+.inputArea{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+    label{
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.thumbnailButton{
+    width: 13%;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.registerInputArea{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.registerInfo{
+    width: 100%;
+    position: relative;
+    padding: 3rem;
+    .registerRow{
+        width: 100%;
+        height: auto;
+        margin-top: 3rem;
+        img{
+            width: 5%;
+            height: 5%;
+        }
+    }
+    .thumbnailBox{
+        margin: 0 auto;
+        img{
+            width:14vmax;
+            height: 14vmax;
+            border-radius: 50%;
+            position: absolute;
+            top: -7vmax;
+        }
+    }
+}
+
+.registerLogo{
+    font-size:3rem;
+}
+
+
+
+.editProfile{
+    padding: 0 3rem;
+    .profileText{
+        width: 70%;
+        padding-right: 10%;
+    }
+    @media screen and (min-width:768px) {
+        .registerInfo{
+            display: flex;
+            flex-wrap: wrap;
+            .registerRow{
+                width: 50%;
+            }
+        }
+        h3{
+            padding-bottom: 3rem;
+        }
+    }
+}
+
+.editInfo{
+    padding: 0;
+    @media screen and (max-width:768px) {
+        img{
+            width: 13%;
+            height: auto;
+        }
+    }
+    @media screen and (min-width:768px) {
+        img{
+            width: auto;
+            height: auto;
+        }
+    }
+}

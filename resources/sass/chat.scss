@@ -1,0 +1,204 @@
+.chatRoom{
+    display:flex;
+    justify-content: center;
+    position: relative;
+    @media screen and (max-width:600px) {
+        flex-direction: column;
+    }
+}
+
+.roomImage{
+    height: 100vh;
+    width: 50vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+    @media screen and (max-width:600px) {
+        height: 40vh;
+        width: 100vw;
+    }
+}
+
+.chatArea{
+    position: relative;
+    width: 50vw;
+    height: 100vh;
+    @media screen and (max-width:600px) {
+        height: 55vh;
+        width: 100vw;
+    }
+}
+
+#chatData{
+    height: 80%;
+    width: 50vw;
+    overflow-y: scroll;
+    @media screen and (max-width:600px) {
+        width: 100vw;
+    }
+}
+
+.textArea{
+    word-wrap:  break-word;
+}
+
+#addMessage{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 50%;
+    margin: auto 0;
+    textarea{
+        width: 85%;
+        font-size: 3rem;
+        border-radius: 5px;
+    }
+    input{
+        width: 10%;
+        border-radius: 5px;
+    }
+    @media screen and (max-width:600px) {
+        height: 50%;
+        textarea{
+            width: 80%;
+        }
+        input{
+            width:15%;
+        }
+    }
+}
+
+.chatMenu{
+    height: 8rem;
+    display: flex;
+    p{
+        font-weight: 700;
+        font-size: 2rem;
+    }
+    @media screen and (max-width:768px) {
+        display: none;
+    }
+}
+
+.return{
+    position: absolute;
+    font-size: 3rem;
+    color: black;
+    z-index: 2;
+    margin: 2.5rem 0;
+    i{
+        margin-right: 2rem;
+    }
+    @media screen and (max-width:600px) {
+        font-size:2rem;
+        margin: 1.5rem;
+    }
+}
+
+.media-body{
+    width: 90%;
+    display: flex;
+    margin: 0 5%;
+    .thumbnail{
+        height: 4vw;
+        width: 4vw;
+    }
+}
+
+.row{
+    display: flex;
+}
+
+#comment{
+    height: 90%;
+    overflow-wrap:  break-word;
+}
+
+.comment-body{
+    display: flex;
+}
+
+.media{
+    min-height: 10%;
+    display: flex;
+    margin: 1rem 0;
+}
+
+#comment{
+    font-size: 2rem;
+    /*height: 2.5rem;*/
+    background-color: rgb(233, 238, 237);
+    margin-right: 0;
+}
+
+.messageArea{
+    border-radius: 10px;
+    word-break: break-word;
+    padding: 0 10px;
+    display: inline-block;
+    background-color: rgb(233, 238, 237);
+}
+
+.my-message{
+    flex-direction: row-reverse;
+    justify-content: end;
+    .row{
+        justify-content: end;
+    }
+    .textArea{
+        margin-right: 5%;
+    }
+    #comment{
+        background-color: aquamarine;
+    }
+}
+
+.invited-message{
+    .textArea{
+        margin-left: 5%;
+    }
+}
+
+#comment{
+    height: 100%;
+}
+
+.my-comment{
+    margin: 0 0 0 10rem;
+    background-color: aquamarine;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+}
+
+.sendMessege{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    padding: 0 3rem;
+    @media  screen and (max-width:600px) {
+        height: 25%;
+    }
+}
+
+.sp-chatMenu{
+    height: 5rem;
+    display: flex;
+    p{
+        font-weight: 700;
+        font-size: 2rem;
+    }
+    @media screen and (min-width:768px) {
+        display: none;
+    }
+}
+

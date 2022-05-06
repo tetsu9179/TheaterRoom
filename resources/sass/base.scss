@@ -1,0 +1,281 @@
+/* リセットCSS */
+body, h1, h2, h3, h4, h5, h6, p, address,
+ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 62.5%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+textarea { font-size: 100%; vertical-align:middle;}
+img { border-style: none; display: block; }
+hr { display: none; }
+em{font-style: normal}
+input{line-height:auto;vertical-align:middle;}
+strong.more{color:#c30}
+a{text-decoration: none;}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+	font-family:'Yu Gothic','YuGothic';
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.container{
+	max-width: 104rem;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.menu-nav{
+	height: 5rem;
+    position: fixed;
+    width: 100%;
+    max-width: 104rem;
+	background-color: #fff;
+	z-index: 999;
+	@media screen and (max-width:769px) {
+		display: none;
+	}
+}
+
+.menu-list{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	li{
+		width: 17%;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		.icon{
+			font-size: 2rem;
+		}
+		a{
+			font-size: 1.5rem;
+			color: rgb(0, 0, 0);
+			@media  screen and (max-width:840px) {
+				font-size: 1rem;
+			}
+		}
+	}
+}
+
+input[type="submit"]{
+	border: none;
+	background-color: #00b8ff;
+	color: #fff;
+}
+
+input{
+	transition: all 0.1s;
+}
+
+input[type=file]{
+	display: none;
+}
+
+textarea{
+	resize: none;
+}
+
+input:focus{
+	background-color: rgba(232,240,254,1);
+	outline: none;
+    box-shadow: 0 0 10px #0177ff;
+	border: 1px solid #0177ff;
+}
+
+textarea:focus{
+	background-color: rgba(232,240,254,1);
+	outline: none;
+	border: 1px solid #0177ff;
+    box-shadow: 0 0 10px #0177ff;
+}
+
+h3{
+	font-size: 2rem;
+}
+
+#app{
+	padding-top: 6rem;
+	@media screen and (max-width:520px) {
+		padding-top: 3rem;
+	}
+}
+
+.error{
+	font-size: 2rem;
+	color:#c30;
+	&::before{
+		content: '※';
+	}
+}
+
+.pageTitle{
+	font-weight: 700;
+	text-align: center;
+	font-size: 4rem;
+}
+
+.submitArea{
+    margin: 3rem auto 0;
+    overflow: hidden;
+    width: 70%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background-color: #00b8ff;
+	border-radius: 1.5rem;
+    &::before{
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        transition: transform 0.6s;
+        transform: scale(0, 1);
+	    transform-origin: left top;
+    }
+    span{
+        font-size: 3rem;
+        z-index: 2;
+        color: #fff;
+    }
+    &:hover{
+        border: 1px solid #00b8ff;
+        span{
+            color:#00b8ff;
+        }
+        &::before{
+            transform-origin:right top;
+	        transform:scale(1, 1);
+        }
+    }
+}
+
+.subButton{
+    background-color: #fff;
+    border: 1px solid #00b8ff;
+    span{
+        color:#00b8ff;
+    }
+    &::before{
+        background-color: #00b8ff;
+    }
+    &:hover{
+        border: none;
+        span{
+            color: #fff;
+        }
+    }
+}
+
+.nav-button{
+	display:flex;
+	flex-direction: column;
+	width: 6rem;
+	height: 6rem;
+	justify-content: space-between;
+	top: 0;
+	left: 0;
+	position: relative;
+	z-index: 50;
+	span{
+		border-bottom: 5px solid #000;
+	}
+
+	.line{
+		position: absolute;
+		top: 0;
+		left: 1rem;
+		width: 4rem;
+		height: 2px;
+		background-color: #000;
+		text-align: center;
+	}
+	.line_01{
+		top: 1rem;
+		transition: 0.5s all;
+	}
+	.line_02{
+		top: 2.5rem;
+		transition: 0.5s all;
+	}
+	.line_03{
+		top: 4rem;
+		transition: 0.5s all;
+	}
+}
+
+.open_btn01{
+	transform:translateY(15px) rotate(-45deg);
+	transition: 0.5s all;
+}
+
+.open_btn02{
+	transition: 0.5s all;
+	opacity: 0;
+}
+.open_btn03{
+	transform:translateY(-15px) rotate(45deg);
+	transition: 0.5s all;
+}
+
+.menu-enter-active, .menu-leave-active {
+	transition: opacity 0.4s;
+  }
+  .menu-enter, .menu-leave-to {
+	opacity: 0;
+  }
+  .menu-leave, .menu-enter-to{
+	opacity: 1;
+  }
+
+.sp-menu-nav {
+	background-color: rgba(197, 197, 197, 0.671);
+	z-index: 30;
+	padding: 2rem 1rem;
+	position: fixed;
+	width: 20rem;
+	height: 100%;
+	top: 0;
+	right: 0;
+  a {
+	color: rgb(66, 66, 66);
+	text-decoration: none;
+	font-size: 1.2rem;
+	padding: 0 1rem;
+  }
+  ul{
+	margin: 1rem;
+	margin-top: 5rem;
+	padding: 0;
+  }
+  .icon{
+	  font-size:1.5rem;
+  }
+  li{
+	  padding: 1rem;
+  }
+}
+  
