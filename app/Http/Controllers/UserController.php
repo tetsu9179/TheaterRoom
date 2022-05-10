@@ -155,7 +155,12 @@ class UserController extends Controller
         $id = $_SESSION['id'];
 
         /*バリデーション*/
-        $validate = Validator::make($request->all(),User::$rules);
+        $validate = Validator::make($request->all(),[
+        'thumbnail' => 'image|mimes:jpeg,png,jpg',
+        'name' => 'required',
+        'email' => 'required | email',
+        'tel' => 'digits_between:0,11'
+        ]);
         if($validate->fails()){
             return redirect('/edit')
                     ->withErrors($validate);
